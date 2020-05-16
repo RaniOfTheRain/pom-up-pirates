@@ -26,8 +26,16 @@ fs.readdir('./commands/', (err, files) => {
     });
 });
 
+const start = async () => {
+
 const { db, models } = await database(config);
 global.MODELS = () => models;
 
-client.login(config.token);
+};
+
+start().catch((e) => {
+    console.log(e)
+})
+
+client.login(config.discordBotToken);
 
