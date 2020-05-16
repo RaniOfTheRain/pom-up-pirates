@@ -15,11 +15,11 @@ client.aliases = new Discord.Collection();
 
 fs.readdir('./events/', (err, files) => {
     if (err) return console.error(err);
-    const jsfiles = files.filter((f) => f.split('.').pop() === 'js');
-    if (jsfiles.length <= 0) {
+    const jsfile = files.filter((f) => f.split('.').pop() === 'js');
+    if (jsfile.length <= 0) {
         return console.log('Arr, no events be spotted!');
     }
-    jsfiles.forEach((file) => {
+    jsfile.forEach((file) => {
         const event = require(`./events/${file}`);
         const eventName = file.split('.')[0];
         client.on(eventName, event.bind(null, client));
